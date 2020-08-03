@@ -1,0 +1,20 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: 1amchris-com-tls
+spec:
+  secretName: 1amchris-com
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: 1amchris.com
+  dnsNames:
+    - 1amchris.com
+    - www.1amchris.com
+  acme:
+    config:
+      - http01:
+          ingressClass: nginx
+        domains:
+          - 1amchris.com
+          - www.1amchris.com
